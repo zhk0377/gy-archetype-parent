@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/maven-sample/!svn/ver/2/branches/sample_V1.0.0/sample-admin-web/src/main/webapp/WEB-INF
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/maven-sample/!svn/ver/2/branches/sample_V1.0.0/sample-admin-web/src/main/webapp/WEB-INF/web.xml
+END
