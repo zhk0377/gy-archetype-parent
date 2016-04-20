@@ -37,7 +37,6 @@
 			<directory>servers/tomcat7</directory>
 			<includes>
 				<include>**/*.policy</include>
-				<include>**/*.jar</include>
 			</includes>
 		</fileSet>
 		<fileSet encoding="UTF-8">
