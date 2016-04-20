@@ -35,6 +35,7 @@
 	<bean id="viewResolver" abstract="true">
 		<property name="attributes">
 			<props>
+				<!-- 通过archetype工程生成之后，过滤掉了{}，需要修改成#{current} -->
 				<prop key="versionNo">#{current}</prop>
 			</props>
 		</property>
