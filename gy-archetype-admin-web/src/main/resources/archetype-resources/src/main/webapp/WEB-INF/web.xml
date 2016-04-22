@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<display-name>Archetype Created Web Application</display-name>
 	<!-- charactor encoding -->
 	<filter>
@@ -73,6 +74,35 @@
 	<servlet-mapping>
 		<servlet-name>sitemesh-freemarker</servlet-name>
 		<url-pattern>*.ftl</url-pattern>
+	</servlet-mapping>
+
+	<!-- 心跳检测 -->
+	<servlet>
+		<servlet-name>heartbeatServlet</servlet-name>
+		<servlet-class>${package}.util.monitor.MonitorServlet</servlet-class>
+		<init-param>
+			<param-name>version</param-name>
+			<param-value>${project.version}</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>heartbeatServlet</servlet-name>
+		<url-pattern>/monitor</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>systemCheckServlet</servlet-name>
+		<servlet-class>${package}.util.monitor.SystemCheckServlet</servlet-class>
+		<init-param>
+			<param-name>propertyConfigLocation</param-name>
+			<param-value>conf/monitor.properties</param-value>
+		</init-param>
+		<load-on-startup>4</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>systemCheckServlet</servlet-name>
+		<url-pattern>/check</url-pattern>
 	</servlet-mapping>
 
 	<!-- index -->
