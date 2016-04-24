@@ -23,6 +23,15 @@
 				<include>**/*.xml</include>
 				<include>**/*.properties</include>
 			</includes>
+			<excludes>
+				<exclude>**/spring-servlet.xml</exclude>
+			</excludes>
+		</fileSet>
+		<fileSet encoding="UTF-8">
+			<directory>src/main/resources</directory>
+			<includes>
+				<include>**/spring-servlet.xml</include>
+			</includes>
 		</fileSet>
 		<fileSet filtered="true" packaged="true" encoding="UTF-8">
 			<directory>src/test/java</directory>

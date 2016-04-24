@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+<web-app id="demo-admin-web" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<display-name>Archetype Created Web Application</display-name>
 	<!-- charactor encoding -->
 	<filter>
@@ -28,6 +27,9 @@
 		classpath:conf/spring/spring-context.xml
 		</param-value>
 	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -96,7 +98,7 @@
 		<servlet-class>${package}.util.monitor.SystemCheckServlet</servlet-class>
 		<init-param>
 			<param-name>propertyConfigLocation</param-name>
-			<param-value>conf/monitor.properties</param-value>
+			<param-value>classpath:conf/monitor.properties</param-value>
 		</init-param>
 		<load-on-startup>4</load-on-startup>
 	</servlet>

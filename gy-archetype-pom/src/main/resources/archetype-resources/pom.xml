@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>${groupId}</groupId>
 	<artifactId>${artifactId}-pom</artifactId>
@@ -143,8 +142,7 @@
 				<artifactId>cobertura-maven-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-					<!-- <instrumentation> <includes> <include>**/*Impl.class</include> 
-						</includes> </instrumentation> -->
+					<!-- <instrumentation> <includes> <include>**/*Impl.class</include> </includes> </instrumentation> -->
 					<check>
 						<branchRate>75</branchRate>
 						<lineRate>75</lineRate>
@@ -153,13 +151,10 @@
 						<totalLineRate>75</totalLineRate>
 						<packageLineRate>75</packageLineRate>
 						<packageBranchRate>75</packageBranchRate>
-						<!-- <regexes> <regex> <pattern>com.example.reallyimportant.*</pattern> 
-							<branchRate>90</branchRate> <lineRate>80</lineRate> </regex> <regex> <pattern>com.example.boringcode.*</pattern> 
-							<branchRate>40</branchRate> <lineRate>30</lineRate> </regex> </regexes> -->
+						<!-- <regexes> <regex> <pattern>com.example.reallyimportant.*</pattern> <branchRate>90</branchRate> <lineRate>80</lineRate> </regex> <regex> <pattern>com.example.boringcode.*</pattern> <branchRate>40</branchRate> <lineRate>30</lineRate> </regex> </regexes> -->
 					</check>
 				</configuration>
-				<!-- <executions> <execution> <goals> <goal>clean</goal> <goal>check</goal> 
-					</goals> </execution> </executions> -->
+				<!-- <executions> <execution> <goals> <goal>clean</goal> <goal>check</goal> </goals> </execution> </executions> -->
 			</plugin>
 		</plugins>
 		<pluginManagement>
@@ -252,8 +247,7 @@
 						</dependency>
 					</dependencies>
 				</plugin>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -300,6 +294,23 @@
 	</build>
 	<dependencyManagement>
 		<dependencies>
+			<!-- dubbo -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>2.5.3</version>
+			</dependency>
+			<!-- zookeeper -->
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>3.4.6</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.sgroschupf</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>0.1</version>
+			</dependency>
 			<!-- junit -->
 			<dependency>
 				<groupId>junit</groupId>
@@ -427,6 +438,11 @@
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
 				<version>${ch.qos.logback-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.logback-extensions</groupId>
+				<artifactId>logback-ext-spring</artifactId>
+				<version>0.1.2</version>
 			</dependency>
 			<!-- spring -->
 			<dependency>

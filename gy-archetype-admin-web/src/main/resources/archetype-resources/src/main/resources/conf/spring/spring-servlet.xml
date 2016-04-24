@@ -13,10 +13,6 @@
    	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
    	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<context:component-scan base-package="${package}.controller" />
-	<!-- <import resource="classpath*:conf/spring/sample-exception.xml" /> -->
-
-
 	<!-- 当前时间 sdf.format(new Date()) -->
 	<bean id="sdf" class="java.text.SimpleDateFormat">
 		<constructor-arg index="0" value="yyyyMMddHHmmss" />
@@ -30,9 +26,7 @@
 			</bean>
 		</constructor-arg>
 	</bean>
-
-	<!--===================== view resovler ===================== -->
-	<bean id="viewResolver" abstract="true">
+	<bean id="commonConfig" abstract="true">
 		<property name="attributes">
 			<props>
 				<!-- 通过archetype工程生成之后，过滤掉了{}，需要修改成#{current} -->
@@ -40,12 +34,14 @@
 			</props>
 		</property>
 	</bean>
-	<bean id="jstlViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver" parent="viewResolver">
+
+	<!--===================== view resovler ===================== -->
+	<bean id="jstlViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver" parent="commonConfig">
 		<property name="order" value="2" />
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/jsp/" />
 	</bean>
-	<bean id="freemarkerResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver" parent="viewResolver">
+	<bean id="freemarkerResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver" parent="commonConfig">
 		<!--<property name="cache" value="true"/> -->
 		<property name="order" value="1" />
 		<property name="viewNames">
@@ -75,15 +71,6 @@
 		<property name="maxInMemorySize">
 			<value>4096</value>
 		</property>
-	</bean>
-	<bean id="webPropertyConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath:conf/main-setting-web.properties</value>
-			</list>
-		</property>
-		<property name="placeholderPrefix" value="@{" />
-		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
 	</bean>
 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<description>Required for Freemarker to work in web tier</description>

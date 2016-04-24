@@ -78,7 +78,7 @@
 				"UserDatabase". Any edits that are performed against this UserDatabase are
 				immediately available for use by the Realm. <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
 				resourceName="UserDatabase"/> <Realm className="org.apache.catalina.realm.JNDIRealm"
-				connectionURL="ldap://10.19.223.129:389/dc=suning,dc=com" debug="99" userPattern="cn={0},ou=persons,dc=suning,dc=com"/>
+				connectionURL="ldap://10.19.223.129:389/dc=test,dc=com" debug="99" userPattern="cn={0},ou=persons,dc=test,dc=com"/>
 				</Realm> -->
 			<Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
 				<!-- SingleSignOn valve, share authentication between web applications
