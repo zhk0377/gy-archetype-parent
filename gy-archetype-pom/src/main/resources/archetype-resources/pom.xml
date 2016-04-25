@@ -151,7 +151,8 @@
 						<totalLineRate>75</totalLineRate>
 						<packageLineRate>75</packageLineRate>
 						<packageBranchRate>75</packageBranchRate>
-						<!-- <regexes> <regex> <pattern>com.example.reallyimportant.*</pattern> <branchRate>90</branchRate> <lineRate>80</lineRate> </regex> <regex> <pattern>com.example.boringcode.*</pattern> <branchRate>40</branchRate> <lineRate>30</lineRate> </regex> </regexes> -->
+						<!-- <regexes> <regex> <pattern>com.example.reallyimportant.*</pattern> <branchRate>90</branchRate> <lineRate>80</lineRate> </regex> <regex> <pattern>com.example.boringcode.*</pattern> <branchRate>40</branchRate> 
+							<lineRate>30</lineRate> </regex> </regexes> -->
 					</check>
 				</configuration>
 				<!-- <executions> <execution> <goals> <goal>clean</goal> <goal>check</goal> </goals> </execution> </executions> -->
@@ -299,6 +300,12 @@
 				<groupId>com.alibaba</groupId>
 				<artifactId>dubbo</artifactId>
 				<version>2.5.3</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<!-- zookeeper -->
 			<dependency>

@@ -26,7 +26,7 @@
             <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}][%thread][%-5level][%-36logger{36}][callId:%X{callId}][%-4L] - %msg%n</Pattern>
         </layout>
     </appender>
-    <logger name="org.gy.demo" additivity="false">
+    <logger name="${package}" additivity="false">
         <level value="DEBUG" />
         <appender-ref ref="STDOUT" />
     </logger>

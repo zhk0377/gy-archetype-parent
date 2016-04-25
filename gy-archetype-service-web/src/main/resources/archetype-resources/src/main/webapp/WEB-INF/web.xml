@@ -37,7 +37,7 @@
 	<!-- 心跳检测 -->
 	<servlet>
 		<servlet-name>heartbeatServlet</servlet-name>
-		<servlet-class>org.gy.demo.util.monitor.MonitorServlet</servlet-class>
+		<servlet-class>${package}.util.monitor.MonitorServlet</servlet-class>
 		<init-param>
 			<param-name>version</param-name>
 			<param-value>${project.version}</param-value>

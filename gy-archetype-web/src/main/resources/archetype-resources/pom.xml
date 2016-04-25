@@ -21,6 +21,20 @@
 			<artifactId>${artifactId}-util</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<!-- dubbo -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+		</dependency>
+		<!-- zookeeper -->
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.sgroschupf</groupId>
+			<artifactId>zkclient</artifactId>
+		</dependency>
 		<!-- log -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -178,7 +192,8 @@
 		</dependency>
 
 		<!-- ehcache-monitor监控依赖包 -->
-		<!--<dependency> <groupId>org.terracotta.ehcachedx.com.javabi</groupId> <artifactId>javabi-sizeof</artifactId> </dependency> <dependency> <groupId>org.terracotta.ehcachedx.monitor</groupId> <artifactId>common</artifactId> </dependency> <dependency> <groupId>commons-math</groupId> <artifactId>commons-math</artifactId> </dependency> -->
+		<!--<dependency> <groupId>org.terracotta.ehcachedx.com.javabi</groupId> <artifactId>javabi-sizeof</artifactId> </dependency> <dependency> <groupId>org.terracotta.ehcachedx.monitor</groupId> <artifactId>common</artifactId> 
+			</dependency> <dependency> <groupId>commons-math</groupId> <artifactId>commons-math</artifactId> </dependency> -->
 
 	</dependencies>
 	<build>
