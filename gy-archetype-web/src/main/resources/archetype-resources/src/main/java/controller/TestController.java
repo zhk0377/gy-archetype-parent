@@ -2,6 +2,7 @@ package ${package}.controller;
 
 import java.util.Date;
 
+import ${package}.dto.test.TestRequestDTO;
 import ${package}.service.TestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,10 +31,11 @@ public class TestController {
     }
 
     @RequestMapping(value = "/json", method = RequestMethod.GET)
-    public ModelAndView json() {
+    public ModelAndView json(TestRequestDTO dto) {
         ModelAndView mav = new ModelAndView(new MappingJacksonJsonView());
         mav.addObject("time", new Date());
         mav.addObject("data", testService.test());
+        mav.addObject("response", testService.test(dto));
         logger.debug("测试日志");
         return mav;
     }

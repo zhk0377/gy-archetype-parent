@@ -30,4 +30,13 @@
 		</property>
 	</bean>
 
+	<!-- 服务统一处理 -->
+	<bean id="commonServiceInterceptor" class="${package}.service.util.ServiceInterceptor"></bean>
+	<aop:config>
+		<aop:pointcut id="servicePointcut" expression="execution(public * ${package}.service.impl..*.*(..))" />
+		<aop:aspect id="serviceAspect" ref="commonServiceInterceptor">
+			<aop:around method="around" pointcut-ref="servicePointcut" />
+		</aop:aspect>
+	</aop:config>
+
 </beans>
