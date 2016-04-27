@@ -22,6 +22,9 @@
 		<org.aspectj-version>1.7.4</org.aspectj-version>
 		<freemarker-version>2.3.19</freemarker-version>
 		<webdriver-version>2.21.0</webdriver-version>
+		<mysql.version>5.1.34</mysql.version>
+		<mybatis-generator.version>1.3.2</mybatis-generator.version>
+		<mybatis.version>3.2.2</mybatis.version>
 	</properties>
 	<profiles>
 		<profile>
@@ -151,8 +154,7 @@
 						<totalLineRate>75</totalLineRate>
 						<packageLineRate>75</packageLineRate>
 						<packageBranchRate>75</packageBranchRate>
-						<!-- <regexes> <regex> <pattern>com.example.reallyimportant.*</pattern> <branchRate>90</branchRate> <lineRate>80</lineRate> </regex> <regex> <pattern>com.example.boringcode.*</pattern> <branchRate>40</branchRate> 
-							<lineRate>30</lineRate> </regex> </regexes> -->
+						<!-- <regexes> <regex> <pattern>com.example.reallyimportant.*</pattern> <branchRate>90</branchRate> <lineRate>80</lineRate> </regex> <regex> <pattern>com.example.boringcode.*</pattern> <branchRate>40</branchRate> <lineRate>30</lineRate> </regex> </regexes> -->
 					</check>
 				</configuration>
 				<!-- <executions> <execution> <goals> <goal>clean</goal> <goal>check</goal> </goals> </execution> </executions> -->
@@ -269,6 +271,97 @@
 										</versionRange>
 										<goals>
 											<goal>compress</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.mybatis.generator</groupId>
+					<artifactId>mybatis-generator-maven-plugin</artifactId>
+					<version>${mybatis-generator.version}</version>
+					<configuration>
+						<configurationFile>
+							src/main/resources/conf/generator/mysqlGeneratorConfig.xml</configurationFile>
+						<verbose>true</verbose>
+						<overwrite>true</overwrite>
+						<!-- <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver> -->
+						<!-- <jdbcURL>jdbc:mysql://127.0.0.1:3306/test</jdbcURL> -->
+						<!-- <jdbcUserId>test</jdbcUserId> -->
+						<!-- <jdbcPassword>test</jdbcPassword> -->
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>${groupId}</groupId>
+							<artifactId>${artifactId}-util</artifactId>
+							<version>${project.version}</version>
+						</dependency>
+						<!-- mysql -->
+						<dependency>
+							<groupId>mysql</groupId>
+							<artifactId>mysql-connector-java</artifactId>
+							<version>${mysql.version}</version>
+						</dependency>
+						<!-- mybatis generator -->
+						<dependency>
+							<groupId>org.mybatis.generator</groupId>
+							<artifactId>mybatis-generator-core</artifactId>
+							<version>${mybatis-generator.version}</version>
+						</dependency>
+						<!-- mybatis -->
+						<dependency>
+							<groupId>org.mybatis</groupId>
+							<artifactId>mybatis</artifactId>
+							<version>${mybatis.version}</version>
+						</dependency>
+					</dependencies>
+					<!-- 自动生成 -->
+					<executions>
+						<execution>
+							<id>Generate MyBatis Artifacts</id>
+							<!-- 默认禁止执行，正确配置generator.properties中jdbc属性，才能去掉phase，否则 报Communications link failure错误 -->
+							<phase>none</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<!-- copy-dependency plugin -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>copy-dependencies</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+
+								<!-- mybatis-generator-plugin -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.mybatis.generator</groupId>
+										<artifactId>mybatis-generator-maven-plugin</artifactId>
+										<versionRange>[1.3.2,)</versionRange>
+										<goals>
+											<goal>generate</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
@@ -661,13 +754,19 @@
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
-				<version>5.1.34</version>
+				<version>${mysql.version}</version>
+			</dependency>
+			<!-- mybatis generator -->
+			<dependency>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-core</artifactId>
+				<version>${mybatis-generator.version}</version>
 			</dependency>
 			<!-- mybatis -->
 			<dependency>
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis</artifactId>
-				<version>3.0.6</version>
+				<version>${mybatis.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.mybatis</groupId>
