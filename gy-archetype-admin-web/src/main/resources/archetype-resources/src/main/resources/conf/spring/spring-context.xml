@@ -11,6 +11,8 @@
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	<!-- 加载配置文件 -->
 	<context:property-placeholder location="classpath:conf/main-setting-web.properties" />
+	
+	<import resource="classpath*:conf/spring/spring-business.xml" />
 
 	<!-- 日志配置 -->
 	<bean id="loggingInitialization" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">

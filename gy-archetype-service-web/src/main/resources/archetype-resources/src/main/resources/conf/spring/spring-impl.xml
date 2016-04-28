@@ -15,6 +15,8 @@
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 
 	<context:component-scan base-package="${package}.service.impl" />
+	
+	<import resource="classpath*:conf/spring/spring-business.xml" />
 
 	<!-- 加载dubbo生产者配置 -->
 	<import resource="spring-dubbo-provider.xml" />
