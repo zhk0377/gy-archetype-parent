@@ -12,7 +12,8 @@
 		<property name="endingDelimiter" value="`" />
 
 		<!-- 关闭注释 -->
-		<commentGenerator type="org.gy.mybatis.util.MyCommentGenerator">
+		<!-- 自定义注释实现类 -->
+		<commentGenerator type="${package}.util.generator.MyCommentGenerator">
 			<property name="suppressDate" value="true" />
 			<!-- <property name="suppressAllComments" value="false" /> -->
 		</commentGenerator>
@@ -44,7 +45,8 @@
 
 		<!--对应数据库表名 -->
 		<table tableName="${generator.tableName}" schema="${mysql.schema}">
-			<generatedKey column="id" sqlStatement="Mysql" />
+			<!-- JDBC :相当于在生成的insert元素上添加useGeneratedKeys="true"和keyProperty属性 -->
+			<generatedKey column="id" sqlStatement="JDBC" />
 		</table>
 
 	</context>

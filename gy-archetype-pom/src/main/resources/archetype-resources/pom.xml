@@ -154,7 +154,8 @@
 						<totalLineRate>75</totalLineRate>
 						<packageLineRate>75</packageLineRate>
 						<packageBranchRate>75</packageBranchRate>
-						<!-- <regexes> <regex> <pattern>com.example.reallyimportant.*</pattern> <branchRate>90</branchRate> <lineRate>80</lineRate> </regex> <regex> <pattern>com.example.boringcode.*</pattern> <branchRate>40</branchRate> <lineRate>30</lineRate> </regex> </regexes> -->
+						<!-- <regexes> <regex> <pattern>com.example.reallyimportant.*</pattern> <branchRate>90</branchRate> <lineRate>80</lineRate> </regex> <regex> <pattern>com.example.boringcode.*</pattern> <branchRate>40</branchRate> 
+							<lineRate>30</lineRate> </regex> </regexes> -->
 					</check>
 				</configuration>
 				<!-- <executions> <execution> <goals> <goal>clean</goal> <goal>check</goal> </goals> </execution> </executions> -->
@@ -277,6 +278,35 @@
 										<ignore />
 									</action>
 								</pluginExecution>
+								<!-- copy-dependency plugin -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>copy-dependencies</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+
+								<!-- mybatis-generator-plugin -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.mybatis.generator</groupId>
+										<artifactId>mybatis-generator-maven-plugin</artifactId>
+										<versionRange>[1.3.2,)</versionRange>
+										<goals>
+											<goal>generate</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
@@ -331,46 +361,6 @@
 							</goals>
 						</execution>
 					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<!-- copy-dependency plugin -->
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-dependency-plugin</artifactId>
-										<versionRange>[1.0.0,)</versionRange>
-										<goals>
-											<goal>copy-dependencies</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-
-								<!-- mybatis-generator-plugin -->
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.mybatis.generator</groupId>
-										<artifactId>mybatis-generator-maven-plugin</artifactId>
-										<versionRange>[1.3.2,)</versionRange>
-										<goals>
-											<goal>generate</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -771,7 +761,7 @@
 			<dependency>
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis-spring</artifactId>
-				<version>1.0.2</version>
+				<version>1.2.2</version>
 			</dependency>
 			<!-- quartz -->
 			<dependency>
