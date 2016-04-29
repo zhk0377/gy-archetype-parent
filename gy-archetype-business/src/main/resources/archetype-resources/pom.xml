@@ -14,6 +14,24 @@
 			<plugin>
 				<groupId>org.mybatis.generator</groupId>
 				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>${groupId}</groupId>
+						<artifactId>${artifactId}-util</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+				</dependencies>
+				<!-- 自动生成 -->
+				<executions>
+					<execution>
+						<id>Generate MyBatis Artifacts</id>
+						<!-- 默认禁止执行，正确配置generator.properties中jdbc属性，才能去掉phase，否则 报Communications link failure错误 -->
+						<phase>none</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
