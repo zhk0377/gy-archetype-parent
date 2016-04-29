@@ -9,7 +9,7 @@
 	<artifactId>${artifactId}-pom</artifactId>
 	<packaging>pom</packaging>
 	<version>${version}</version>
-	<name>${artifactId}-pom</name>
+	<name>${project.artifactId}</name>
 	<modules>
 		<module>../${artifactId}-util</module>
 		<module>../${artifactId}-business</module>

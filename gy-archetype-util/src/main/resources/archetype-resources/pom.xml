@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>${artifactId}-util</artifactId>
 	<packaging>jar</packaging>
-	<name>${artifactId}-util</name>
+	<name>${project.artifactId}</name>
 	<parent>
 		<groupId>${groupId}</groupId>
 		<artifactId>${artifactId}-pom</artifactId>

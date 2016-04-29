@@ -9,5 +9,5 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>gy-archetype-admin-web</artifactId>
-	<name>gy-archetype-admin-web</name>
+	<name>${project.artifactId}</name>
 </project>

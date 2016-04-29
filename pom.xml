@@ -5,8 +5,7 @@
 	<artifactId>gy-archetype-parent</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>gy-archetype-parent</name>
-	<description>gy-archetype-parent</description>
+	<name>${project.artifactId}</name>
 	<modules>
 		<module>gy-archetype-pom</module>
 		<module>gy-archetype-business</module>

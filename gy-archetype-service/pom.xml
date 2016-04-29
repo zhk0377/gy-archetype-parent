@@ -9,5 +9,5 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>gy-archetype-service</artifactId>
-	<name>gy-archetype-service</name>
+	<name>${project.artifactId}</name>
 </project>

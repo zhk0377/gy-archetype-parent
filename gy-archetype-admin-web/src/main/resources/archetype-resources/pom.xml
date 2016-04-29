@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>${artifactId}-admin-web</artifactId>
 	<packaging>war</packaging>
-	<name>${artifactId}-admin-web</name>
+	<name>${project.artifactId}</name>
 	<parent>
 		<groupId>${groupId}</groupId>
 		<artifactId>${artifactId}-pom</artifactId>
@@ -210,7 +210,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>${artifactId}-admin-web</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<!-- 1.压缩，2.替换，3.war包，4静态zip包 -->
 			<!--warpluginconfig:对静态资源进行过滤，替换变量。如果你不需要，请移除这一段 -->
