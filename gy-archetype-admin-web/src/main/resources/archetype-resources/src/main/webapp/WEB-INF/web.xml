@@ -98,7 +98,7 @@
 		<servlet-class>${package}.util.monitor.SystemCheckServlet</servlet-class>
 		<init-param>
 			<param-name>propertyConfigLocation</param-name>
-			<param-value>classpath:conf/monitor.properties</param-value>
+			<param-value>conf/monitor.properties</param-value>
 		</init-param>
 		<load-on-startup>4</load-on-startup>
 	</servlet>
