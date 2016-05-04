@@ -31,8 +31,6 @@ public class SystemCheckServlet extends HttpServlet {
 
     public static final String              DEFAULT_LOCATION_NAME = "propertyConfigLocation";
 
-    public static final String              CLASSPATH_URL_PREFIX  = "classpath:";
-
     public static final Map<String, String> PropertyMap           = new HashMap<String, String>();
 
     private static HttpClient               httpClient;
@@ -93,9 +91,6 @@ public class SystemCheckServlet extends HttpServlet {
     private void loadProperties(String location, Map<String, String> propertyMap) {
         InputStream is = null;
         try {
-            if (location.startsWith(CLASSPATH_URL_PREFIX)) {
-                location = location.substring(CLASSPATH_URL_PREFIX.length());
-            }
             is = this.getClass().getClassLoader().getResourceAsStream(location);
             if (is == null) {
                 return;
