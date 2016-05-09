@@ -11,6 +11,7 @@ import java.net.URL;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.List;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -30,12 +31,12 @@ public class HttpClientUtil {
 
     protected static final Logger logger                  = LoggerFactory.getLogger(HttpClientUtil.class);
 
-    public static final String   METHOD_POST             = "POST";
-    public static final String   METHOD_GET              = "GET";
-    public static final String   DEFAULT_CHARSET         = "utf-8";
-    public static final String   DEFAULT_CONTENT_TYPE    = "application/json;charset=UTF-8";
-    public static final int      DEFAULT_CONNECT_TIMEOUT = 5000;
-    public static final int      DEFAULT_READ_TIMEOUT    = 5000;
+    public static final String    METHOD_POST             = "POST";
+    public static final String    METHOD_GET              = "GET";
+    public static final String    DEFAULT_CHARSET         = "utf-8";
+    public static final String    DEFAULT_CONTENT_TYPE    = "application/json;charset=UTF-8";
+    public static final int       DEFAULT_CONNECT_TIMEOUT = 5000;
+    public static final int       DEFAULT_READ_TIMEOUT    = 5000;
 
     public static void main(String[] args) {
         String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
@@ -50,6 +51,26 @@ public class HttpClientUtil {
     public static String defaultPost(String postUrl,
                                      String param) {
         return post(postUrl, param, DEFAULT_CONNECT_TIMEOUT, DEFAULT_READ_TIMEOUT, DEFAULT_CHARSET);
+    }
+
+    /**
+     * 功能描述: 向百度主动推送链接
+     * 
+     * @param pushUrl 百度推送调用地址
+     * @param paramUrl 待推送的链接地址集合
+     * @return
+     */
+    public static String baiduPush(String pushUrl,
+                                   List<String> paramUrl) {
+        if (pushUrl == null || paramUrl == null || paramUrl.size() == 0) {
+            return null;
+        }
+        // 百度要求提交的链接必须一行一个
+        StringBuilder builder = new StringBuilder();
+        for (String s : paramUrl) {
+            builder.append(s).append("\n");
+        }
+        return defaultPost(pushUrl, builder.toString());
     }
 
     /**
