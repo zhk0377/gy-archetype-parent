@@ -121,12 +121,14 @@ public class HttpClientUtil {
         DataOutputStream out = null;
         try {
             conn = getConnection(postUrl, METHOD_POST, connectTimeout, readTimeout);
-            // 获取URLConnection对象对应的输出流
-            out = new DataOutputStream(conn.getOutputStream());
             // 发送请求参数
-            out.write(param.getBytes(charset));
-            // flush输出流的缓冲
-            out.flush();
+            if (param != null) {
+                // 获取URLConnection对象对应的输出流
+                out = new DataOutputStream(conn.getOutputStream());
+                out.write(param.getBytes(charset));
+                // flush输出流的缓冲
+                out.flush();
+            }
             return getStreamAsString(conn.getInputStream(), charset);
         } catch (Exception e) {
             logger.error("发送POST请求异常：" + e.getMessage(), e);
