@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "请确保当前机器已经配置maven环境变量！"
 #检查maven版本，采用call执行，避免闪退
 mvn -version
@@ -8,7 +8,6 @@ package="org.gy.demo"
 appCode="demo"
 version="1.0.0-SNAPSHOT"
 
-executeAppCode=""
 #设置全局模板archetypeGroupId，archetypeArtifactId，archetypeVersion
 #1、gy-archetype-admin-web：后台web服务模板
 #2、gy-archetype-business：业务逻辑模板
@@ -53,15 +52,8 @@ generateModule(){
 	echo "archetypeVersion：$3" 
 	echo "模块名称：$4"
 
-	if [ $executeAppCode ]
-	then
-		echo ''
-	else
-		executeAppCode=$appCode
-	fi
-	mvn archetype:generate -DarchetypeGroupId=$1 -DarchetypeArtifactId=$2 -DarchetypeVersion=$3 -DinteractiveMode=false -DarchetypeCatalog=local -DgroupId=$package -Dversion=$version -DartifactId=$executeAppCode
-
-	executeAppCode=${appCode}"-"${4}
+	mvn archetype:generate -DarchetypeGroupId=$1 -DarchetypeArtifactId=$2 -DarchetypeVersion=$3 -DinteractiveMode=false -DarchetypeCatalog=local -DgroupId=$package -Dversion=$version -DartifactId=$appCode
+	mv $appCode ${appCode}"-"${4}
 	echo "执行$4成功。。。"
 
 }
@@ -111,36 +103,43 @@ stepBuild(){
 		#主pom工程
 		echo '你选择了生成 主pom工程'
 		generateModule $archetypeGroupId $archetypeArtifactId_pom $archetypeVersion pom
+    	stepBuild
     ;;
     2)  
 		#工具类工程jar，供各个工程使用
 		echo '你选择了生成 工具类工程 util'
 		generateModule $archetypeGroupId $archetypeArtifactId_util $archetypeVersion util
+    	stepBuild
     ;;
     3)  
 		#业务逻辑工程jar，供sample-admin-web、sample-service-web使用
 		echo '你选择了生成 业务逻辑工程 business'
 		generateModule $archetypeGroupId $archetypeArtifactId_business $archetypeVersion business
+   		stepBuild
     ;;
     4)  
 		#中台接口服务jar，供sample-web、sample-service-web使用
 		echo '你选择了生成 中台接口服务'
 		generateModule $archetypeGroupId $archetypeArtifactId_service $archetypeVersion service
+    	stepBuild
     ;;
     5)  
 		#后台web工程war，提供后台管理服务
 		echo '你选择了生成 后台web工程 amdin-web'
 		generateModule $archetypeGroupId $archetypeArtifactId_admin_web $archetypeVersion admin-web
+    	stepBuild
     ;;
     6)  
 		#中台接口服务实现war，提供远程服务
 		echo '你选择了生成 中台接口服务实现功能 service-web'
 		generateModule $archetypeGroupId $archetypeArtifactId_service_web $archetypeVersion service-web
+   		stepBuild
     ;;
     7)  
 		#前台web工程war，提供前台展示服务
 		echo '你选择了生成 前台web工程 web'
 		generateModule $archetypeGroupId $archetypeArtifactId_web $archetypeVersion web
+    	stepBuild
     ;;
     8)  
 		#返回主菜单
